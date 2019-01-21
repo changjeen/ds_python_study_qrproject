@@ -68,10 +68,15 @@ function initCanvas(w,h)
     gCanvas = document.getElementById("qr-canvas");
     gCanvas.style.width = w + "px";
     gCanvas.style.height = h + "px";
+    // gCanvas.style.width = 0 + "px";
+    // gCanvas.style.height = 0 + "px";
     gCanvas.width = w;
     gCanvas.height = h;
+    // gCanvas.width = 0;
+    // gCanvas.height = 0;
     gCtx = gCanvas.getContext("2d");
     gCtx.clearRect(0, 0, w, h);
+    //gCtx.clearRect(0, 0, 0, 0);
 }
 
 
@@ -110,6 +115,11 @@ function read(a)
         html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
     html+="<b>"+htmlEntities(a)+"</b><br><br>";
     document.getElementById("result").innerHTML=html;
+    if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0) {        
+        if ( confirm(a+ "로 이동학시겠습니까?","title") ) {            
+            window.location.href='../auth/register';
+        }
+    }
 }	
 
 function isCanvasSupported(){
@@ -137,6 +147,7 @@ function load()
 	if(isCanvasSupported() && window.File && window.FileReader)
 	{
 		initCanvas(800, 600);
+        //initCanvas(0, 0);
 		qrcode.callback = read;
 		document.getElementById("mainbody").style.display="inline";
         setwebcam();
@@ -177,14 +188,14 @@ function setwebcam()
 	else{
 		console.log("no navigator.mediaDevices.enumerateDevices" );
 		setwebcam2(options);
-	}
+	}   
 	
 }
 
 function setwebcam2(options)
 {
 	console.log(options);
-	document.getElementById("result").innerHTML="- scanning -";
+	document.getElementById("result").innerHTML="QR 코드를 스캔해주세요!";
     if(stype==1)
     {
         setTimeout(captureToCanvas, 500);    
@@ -201,7 +212,7 @@ function setwebcam2(options)
             then(function(stream){
                 success(stream);
             }).catch(function(error){
-                error(error)
+                error(error);
             });
     }
     else

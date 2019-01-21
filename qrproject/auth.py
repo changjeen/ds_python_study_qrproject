@@ -9,7 +9,6 @@ from qrproject.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-x = 123
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():

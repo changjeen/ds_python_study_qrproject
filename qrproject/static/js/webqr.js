@@ -117,7 +117,15 @@ function read(a)
     document.getElementById("result").innerHTML=html;
     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0) {        
         if ( confirm(a+ "로 이동학시겠습니까?","title") ) {            
-            window.location.href='../auth/register';
+            //window.location.href='../auth/register';
+            alert("hit");
+            oFormObject = document.forms['seatForm'];
+            oFormObject.elements["seat_no"].value = "333";
+            oFormObject.elements["floor"].value = "11";
+            // document.getElementById("seat_no").value = "333";
+            // document.getElementById("floor").value = "11";
+            document.getElementById("seatForm").submit();
+            
         }
     }
 }	

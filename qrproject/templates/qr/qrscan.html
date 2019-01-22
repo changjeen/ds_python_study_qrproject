@@ -64,6 +64,17 @@ if(userAgent.match('iphone')) {
 </table>
 </div>&nbsp;
 </div>
+<form method="POST" action="javascript:void(0);" name="seatForm" id="seatForm">
+    <input type="hidden" name="seat_no" value="">    
+    <input type="hidden" name="floor" value="">   
+    <input type="submit" hidden="true" onclick="javascript:completeAndRedirect();">
+</form>
+<script>
+function completeAndRedirect(){    
+    document.getElementById("seatForm").action = "../qrregister";
+    document.getElementById("seatForm").submit();    
+}
+</script>
 <canvas id="qr-canvas" width="800" height="600" hidden="true"></canvas>
 <script type="text/javascript">load();</script>
 <script> 

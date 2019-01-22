@@ -7,6 +7,14 @@ CREATE TABLE user (
   password TEXT NOT NULL
 );
 
+CREATE TABLE seat ( 
+  seat_no TEXT PRIMARY KEY,
+  floor TEXT NOt NULL,
+  occu_id TEXT NULL,
+  occu_date TEXT NULL DEFAULT CURRENT_DATE,
+  occu_time TEXT NULL DEFAULT CURRENT_TIME
+);
+
 CREATE TABLE post (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id INTEGER NOT NULL,

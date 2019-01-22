@@ -9,12 +9,15 @@ from qrproject.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        rnk = request.form['rnk']
+        phone_no = request.form['phone_no']
+        user_type = '2'
+        
         db = get_db()
         error = None
 
@@ -29,8 +32,8 @@ def register():
 
         if error is None:
             db.execute(
-                'INSERT INTO user (username, password) VALUES (?, ?)',
-                (username, generate_password_hash(password))
+                'INSERT INTO user (username, password,user_type,rnk,phone_no) VALUES (?, ?, ?, ?, ?)',
+                (username, generate_password_hash(password), user_type, rnk, phone_no)
             )
             db.commit()
             return redirect(url_for('auth.login'))

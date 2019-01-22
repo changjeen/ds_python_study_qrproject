@@ -219,22 +219,22 @@ function setwebcam2(options)
         n.mediaDevices.getUserMedia({video: options, audio: false}).
             then(function(stream){
                 success(stream);
-            }).catch(function(error){
-                error(error);
+            }).catch(function(err){
+                error(err);
             });
     }
-    else
-    if(n.getUserMedia)
-	{
-		webkit=true;
-        n.getUserMedia({video: options, audio: false}, success, error);
-	}
-    else
-    if(n.webkitGetUserMedia)
-    {
-        webkit=true;
-        n.webkitGetUserMedia({video:options, audio: false}, success, error);
-    }
+	// else
+	// if(n.getUserMedia)
+	// {
+	// 	webkit=true;
+	// n.getUserMedia({video: options, audio: false}, success, error);
+	// }
+	// else
+	// if(n.webkitGetUserMedia)
+	// {
+	// webkit=true;
+	// n.webkitGetUserMedia({video:options, audio: false}, success, error);
+	// }
 
     document.getElementById("qrimg").style.opacity=0.2;
     document.getElementById("webcamimg").style.opacity=1.0;

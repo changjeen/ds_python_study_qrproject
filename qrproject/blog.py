@@ -8,7 +8,7 @@ from qrproject.db import get_db
 
 bp = Blueprint('blog', __name__)
 
-@bp.route('/')
+@bp.route('/xx')
 def index():
     db = get_db()
     posts = db.execute(

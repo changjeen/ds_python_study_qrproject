@@ -116,12 +116,21 @@ function read(a)
     html+="<b>"+htmlEntities(a)+"</b><br><br>";
     document.getElementById("result").innerHTML=html;
     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0) {        
-        if ( confirm(a+ "로 이동학시겠습니까?","title") ) {            
-            //window.location.href='../auth/register';
-            alert("hit");
+        var ret = a.replace('https://qrproject.run.goorm.io/seat/','');
+            var arr = ret.split('/');
+            
+            
+        if ( confirm(arr[0] + "/" + arr[1] + "로 이동하시겠습니까?","title") ) {            
+            //window.location.href='../auth/register';            
             oFormObject = document.forms['seatForm'];
-            oFormObject.elements["seat_no"].value = "333";
-            oFormObject.elements["floor"].value = "11";
+            //https://qrproject.run.goorm.io/seat/6/4
+            var ret = a.replace('https://qrproject.run.goorm.io/seat/','');
+            var arr = ret.split('/');
+            
+            oFormObject.elements["floor"].value = arr[0];
+            oFormObject.elements["seat_no"].value = arr[1];
+            
+            console.log(arr[0]);
             // document.getElementById("seat_no").value = "333";
             // document.getElementById("floor").value = "11";
             document.getElementById("seatForm").submit();

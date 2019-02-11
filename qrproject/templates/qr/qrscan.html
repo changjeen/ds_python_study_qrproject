@@ -47,6 +47,17 @@ if(userAgent.match('iphone')) {
 <td valign="top" align="center" width="50%">
 <table class="tsel" border="0">
 <tr>
+    <td>
+        <div class="container">  
+        {% for message in get_flashed_messages() %}        
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>            
+        {% endfor %}       
+        </div>
+    </td>
+</tr>
+<tr>
 <td><img class="selector" id="webcamimg" src="https://webqr.com/vid.png" onclick="setwebcam()" align="left" hidden="true"/></td>
 <td><img class="selector" id="qrimg" src="https://webqr.com/cam.png" onclick="setimg()" align="right" hidden="true" /></td></tr>
 <tr><td colspan="2" align="center">

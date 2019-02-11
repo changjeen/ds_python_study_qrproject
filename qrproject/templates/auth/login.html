@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
-
-{% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-  </form>
+    
+  <div class="wrapper">
+    <form class="form-signin" method="post">       
+      <h2 class="form-signin-heading">로그인</h2>      
+        {% for message in get_flashed_messages() %}        
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>            
+        {% endfor %}       
+      
+      <input type="text" class="form-control" name="email" placeholder="이메일을 입력해주세요" required="" autofocus="" />
+      <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해주세요" required=""/>      
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+    </form>
+    
+  </div>
 {% endblock %}

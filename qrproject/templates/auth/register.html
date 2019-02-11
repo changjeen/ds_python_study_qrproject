@@ -1,28 +1,36 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Register{% endblock %}</h1>
-{% endblock %}
-
 {% block content %}
-    <form method="post">
-        <label for="username">Username</label>
-        <input name="username" id="username" required>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>        
-        <br>  
+<div class="wrapper">
+<form class="form-signin" method="post">
+        <h2 class="form-signin-heading">회원 가입</h2>      
+        {% for message in get_flashed_messages() %}        
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>            
+        {% endfor %}       
+        <label for="username">이름<font color="red">(*)</font></label>
+        <input name="username" class="form-control" id="username" placeholder="이름을 입력해주세요" required>
+        <label for="username">이메일<font color="red">(*)</font></label>
+        <input name="email" class="form-control" id="email" placeholder="이메일 주소를 입력해주세요" required>
+        <label for="password">비밀번호<font color="red">(*)</font></label>
+        <input type="password" class="form-control" name="password" id="password" required text="">               
+         <label for="password">비밀번호 재입력<font color="red">(*)</font></label>
+        <input type="password" class="form-control" name="password-re" id="password-re" required text="">                   
         <label for="rnk">직급</label>
-        <select name="rnk" id="rnk" value="" >
+        <select name="rnk" id="rnk" value="" class="form-control" >
             <option value="" selected="selected">선택</option>
             <option value="부장">부장</option>
             <option value="차장">차장</option>
             <option value="과장">과장</option>
-            <option value="대리">대림</option>
+            <option value="대리">대리</option>
             <option value="사원">사원</option>
+            <option value="사원">기타</option>
         </select>        
-        <label for="phone_no">CP#</label>
-        <input name="phone_no" id="phone_no" required>
+        <label for="phone_no">연락처('-' 없이 입력해주세요)</label>
+        <input class="form-control" name="phone_no" id="phone_no" required>
         <br>
-        <input type="submit" value="Register">
-    </form>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">가입</button>           
+    </form>  
+</div>      
 {% endblock %}

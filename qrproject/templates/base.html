@@ -15,45 +15,45 @@
 <body>    
 
 <title>{% block title %}{% endblock %} - mainapp</title>
-<nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light" id="menubar" style="background-color: #e3f2fd;">  
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#"><span class="glyphicon glyphicon-plus"></span>D_SCHECK</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/qrscan"><span class="glyphicon  glyphicon-qrcode" aria-hidden="true"></span>QR SCAN</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/seatstatus">#_STATUS</a>
-            </li>            
-        </ul>
-        {% if g.user %}   
-        <div>                
-            <h3>
-                {{ g.user['username']}}님
-            </h3>   
-        </div>
-        <button type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>             
-            <a href= {{ url_for('auth.logout') }} class="navbar-brand"><span class="glyphicon  glyphicon-log-out" aria-hidden="true"></span>Logout</a>
-        </button>
-        {% else %}
-        <button type="button" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>             
-            <a href= {{ url_for('auth.login') }} class="navbar-brand"><span class="glyphicon  glyphicon-log-out" aria-hidden="true"></span>Login</a>
-        </button>
-        <button type="button" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>             
-            <a href= {{ url_for('auth.register') }} class="navbar-brand"><span class="glyphicon  glyphicon-log-out" aria-hidden="true"></span>회원 가입</a>
-        </button>
-        {% endif %}
-    </div>      
-</nav>
+{#<nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light" id="menubar" style="background-color: #e3f2fd;">  #}
+{#    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">#}
+{#    <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{#    <div class="collapse navbar-collapse" id="navbarNav">#}
+{#        #}
+{#        <ul class="navbar-nav mr-auto">#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#"><span class="glyphicon glyphicon-plus"></span>D_SCHECK</a>#}
+{#            </li>#}
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="/qrscan"><span class="glyphicon  glyphicon-qrcode" aria-hidden="true"></span>QR SCAN</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="/seatstatus">#_STATUS</a>#}
+{#            </li>            #}
+{#        </ul>#}
+{#        {% if g.user %}   #}
+{#        <div>                #}
+{#            <h3>#}
+{#                {{ g.user['username']}}님#}
+{#            </h3>   #}
+{#        </div>#}
+{#        <button type="button" class="btn btn-default btn-lg">#}
+{#            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>             #}
+{#            <a href= {{ url_for('auth.logout') }} class="navbar-brand"><span class="glyphicon  glyphicon-log-out" aria-hidden="true"></span>Logout</a>#}
+{#        </button>#}
+{#        {% else %}#}
+{#        <button type="button" class="btn btn-default btn-sm">#}
+{#            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>             #}
+{#            <a href= {{ url_for('auth.login') }} class="navbar-brand"><span class="glyphicon  glyphicon-log-out" aria-hidden="true"></span>Login</a>#}
+{#        </button>#}
+{#        <button type="button" class="btn btn-default btn-sm">#}
+{#            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>             #}
+{#            <a href= {{ url_for('auth.register') }} class="navbar-brand"><span class="glyphicon  glyphicon-log-out" aria-hidden="true"></span>회원 가입</a>#}
+{#        </button>#}
+{#        {% endif %}#}
+{#    </div>      #}
+{#</nav>#}
 <section class="content">
   <header>
     {% block header %}{% endblock %}

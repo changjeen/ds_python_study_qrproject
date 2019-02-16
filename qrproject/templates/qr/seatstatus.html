@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div>
+        <button onclick="window.location.reload(1)">Reload</button>
+        <button onclick="getAllSeatStatus()">좌석상태보기</button>
+    </div>
  <div id="seatmap" ></div>
 {% endblock %}
 
@@ -31,17 +35,17 @@ img.src = '{{ url_for('static', filename= 'img/6f.JPG')}}';
     
 // spriteIcon : blue, red, green
 if (img.complete) {
-    imgWidth = img.width;
-    imgHeight = img.height;
-    {% for s in seat %}    
-        console.log(height + " " + imgHeight + " " + height/imgHeight);        
-        L.marker(L.latLng([height-({{s['ypos']}}* (height/imgHeight)), ({{s['xpos']}} * (width/imgWidth))]),
-            {% if s['occu_id'] != '' and s['occu_id'] is not none %}
-                {icon: L.spriteIcon('red')}).addTo(map);
-            {% else %}
-                {icon: L.spriteIcon('green')}).addTo(map);
-            {% endif %}
-    {% endfor %}
+    {#imgWidth = img.width;#}
+    {#imgHeight = img.height;#}
+    {#{% for s in seat %}    #}
+    {#    console.log(height + " " + imgHeight + " " + height/imgHeight);        #}
+    {#    L.marker(L.latLng([height-({{s['ypos']}}* (height/imgHeight)), ({{s['xpos']}} * (width/imgWidth))]),#}
+    {#        {% if s['occu_id'] != '' and s['occu_id'] is not none %}#}
+    {#            {icon: L.spriteIcon('red')}).addTo(map);#}
+    {#        {% else %}#}
+    {#            {icon: L.spriteIcon('green')}).addTo(map);#}
+    {#        {% endif %}#}
+    {#{% endfor %}#}
 } else {  
   img.addEventListener('error', function() {
       alert('error')
@@ -70,13 +74,36 @@ map.addLayer(baseMaps["6F"]);
 map.fitBounds(bounds);    
     
 
-
+/*
 setTimeout(function(){
    window.location.reload(1);
 }, 5000);
+*/
 
+function getAllSeatStatus() {
+    var img = new Image();
+    //img.src = 'https://qrproject.run.goorm.io/static/img/6f.JPG';
+    img.src = '{{ url_for('static', filename= 'img/6f.JPG')}}';
 
-
+    // spriteIcon : blue, red, green
+    if (img.complete) {
+        imgWidth = img.width;
+        imgHeight = img.height;
+        {% for s in seat %}
+            console.log(height + " " + imgHeight + " " + height/imgHeight);
+            L.marker(L.latLng([height-({{s['ypos']}}* (height/imgHeight)), ({{s['xpos']}} * (width/imgWidth))]),
+                {% if s['occu_id'] != '' and s['occu_id'] is not none %}
+                    {icon: L.spriteIcon('red')}).addTo(map);
+                {% else %}
+                    {icon: L.spriteIcon('green')}).addTo(map);
+                {% endif %}
+        {% endfor %}
+    } else {
+      img.addEventListener('error', function() {
+          alert('error')
+      })
+    }
+}
  
 </script>
 
